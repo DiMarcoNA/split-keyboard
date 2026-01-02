@@ -1,0 +1,190 @@
+units:
+  px: u + 2
+  py: u + 2
+
+
+  pushX: (u / 2)
+  pushY: (u / 2)
+
+  padX: pushX + 2
+  padY: pushY + 2
+
+  pad: 2
+
+  spacing: 0.75
+
+  controllerW: 18.5
+  controllerH: 33.5
+  belowControllerH: 17
+  caseBorder: 1.5
+  screwThreadRadius: 0.5
+  screwPCBRadius: 4.0
+points:
+  key:
+    padding: u + spacing
+    spread: u + spacing
+  zones:
+    left-matrix:
+        columns:
+          first:
+            key:
+              stagger: 0
+          second:
+            key:
+              stagger: 3
+          third:
+            key:
+              stagger: 3
+          fourth:
+            key:
+              stagger: -3
+          fifth:
+            key:
+              stagger: -3
+        rows:
+          bottom:
+          home:
+          top:
+          number:
+    left-shift-column:
+      key:
+      anchor:
+        ref: left-matrix_first_bottom
+        shift: [-u-.75, 0]
+      columns:
+        first:
+      rows:
+        bottom:
+          width: 2u
+          shift: [-.5u]
+        home:
+          width: 2u
+        top:
+          width: 1.5u
+          shift: [-.25u]
+        number:
+          shift: [0.75u]
+    left-command-row:
+      key:
+      anchor:
+        ref: left-shift-column_first_bottom
+        shift: [-.355u, -u-0.75]
+      columns:
+        control:
+          key:
+            width: 1.25u
+        windows:
+          key:
+            width: 1.25u
+            shift: [0.25u+0.75]
+        alt:
+          key:
+            width: 1.25u
+            shift: [0.5u+1.5]
+        space:
+          key:
+            width: 3u
+            shift: [1.8u]
+    right-matrix:
+      anchor:
+        ref: left-matrix_first_bottom
+        shift: [130, 0]
+      columns:
+          first:
+            key:
+              stagger: 0
+          second:
+            key:
+              stagger: 3
+          third:
+            key:
+              stagger: 3
+          fourth:
+            key:
+              stagger: -3
+          fifth:
+            key:
+              stagger: -3
+          sixth:
+            key:
+              stagger: 0
+      rows:
+        bottom:
+        home:
+        top:
+        number:
+    right-shift-column:
+      anchor:
+        ref: right-matrix_sixth_bottom
+        shift: [u+0.75, 0]
+      columns:
+        first:
+      rows:
+        bottom:
+        home:
+        top:
+        number:
+    right-command-row:
+      anchor:
+        ref: right-shift-column_first_bottom
+        shift: [-6(u+0.75), -u-0.75]
+      rows:
+        first:
+      columns:
+        space:
+          key:
+            width: 2.25u
+            shift: [0.75u]
+        star:
+          key:
+            shift: [2.08u]
+        r_arrow:
+          key:
+            shift: [2.08u]
+        d_arrow:
+          key:
+            shift: [2.08u]
+        l_arrow:
+          key:
+            shift: [2.08u]
+        
+          
+outlines:
+  board-left:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        # Top
+        - ref: left-shift-column_first_num
+          shift: [-padX, padY]
+        - ref: left-matrix_first_num
+          shift: [pushX - pad, padY]
+        - ref: left-matrix_second_num
+          shift: [-pushX - pad, padY]
+        - ref: left-matrix_second_num
+          shift: [pushX - pad, padY]
+        - ref: left-matrix_third_num
+          shift: [-pushX - pad, padY]
+        - ref: left-matrix_third_num
+          shift: [padX, padY]
+        - ref: left-matrix_fourth_num
+          shift: [-pushX + pad, padY]
+        - ref: left-matrix_fourth_num
+          shift: [padX, padY]
+        - ref: left-matrix_fifth_num
+          shift: [-pushX + pad, padY]
+        - ref: left-matrix_fifth_num
+          shift: [padX, padY]
+        # Bottom
+        - ref: left-matrix_fifth_num
+          shift: [padX, -4u - padY - 3]
+        - ref: left-command-row_control_first
+          shift: [-padX, -padY]
+        # Connect to top corner
+        - ref: left-command-row_control_first
+          shift: [-padX, 3.5u + 2.5]
+        - ref: left-shift-column_first_top
+          shift: [0.75u - padX, pushY]
+
+            
