@@ -45,7 +45,7 @@ points:
           bottom:
           home:
           top:
-          number:
+          num:
     left-shift-column:
       key:
       anchor:
@@ -62,7 +62,7 @@ points:
         top:
           width: 1.5u
           shift: [-.25u]
-        number:
+        num:
           shift: [0.75u]
     left-command-row:
       key:
@@ -112,7 +112,7 @@ points:
         bottom:
         home:
         top:
-        number:
+        num:
     right-shift-column:
       anchor:
         ref: right-matrix_sixth_bottom
@@ -123,7 +123,7 @@ points:
         bottom:
         home:
         top:
-        number:
+        num:
     right-command-row:
       anchor:
         ref: right-shift-column_first_bottom
@@ -179,10 +179,10 @@ outlines:
         # Bottom
         - ref: left-matrix_fifth_num
           shift: [padX, -4u - padY - 3]
-        - ref: left-command-row_control_first
+        - ref: left-command-row_control
           shift: [-padX, -padY]
         # Connect to top corner
-        - ref: left-command-row_control_first
+        - ref: left-command-row_control
           shift: [-padX, 3.5u + 2.5]
         - ref: left-shift-column_first_top
           shift: [0.75u - padX, pushY]
