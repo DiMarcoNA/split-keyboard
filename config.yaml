@@ -138,13 +138,13 @@ points:
         star:
           key:
             shift: [2.08u]
-        r_arrow:
+        r-arrow:
           key:
             shift: [2.08u]
-        d_arrow:
+        d-arrow:
           key:
             shift: [2.08u]
-        l_arrow:
+        l-arrow:
           key:
             shift: [2.08u]
         
@@ -155,36 +155,77 @@ outlines:
       operation: stack
       fillet: 2
       points:
-        # Top
+        # ─── Top-left corner ───
         - ref: left-shift-column_first_num
-          shift: [-padX, padY]
-        - ref: left-matrix_first_num
-          shift: [pushX - pad, padY]
-        - ref: left-matrix_second_num
-          shift: [-pushX - pad, padY]
-        - ref: left-matrix_second_num
-          shift: [pushX - pad, padY]
-        - ref: left-matrix_third_num
-          shift: [-pushX - pad, padY]
-        - ref: left-matrix_third_num
-          shift: [padX, padY]
-        - ref: left-matrix_fourth_num
-          shift: [-pushX + pad, padY]
-        - ref: left-matrix_fourth_num
-          shift: [padX, padY]
+          shift: [-padX - 0.825u, padY + 0.325u]
+
+        # ─── Top-right corner (near center gap) ───
         - ref: left-matrix_fifth_num
-          shift: [-pushX + pad, padY]
-        - ref: left-matrix_fifth_num
-          shift: [padX, padY]
-        # Bottom
-        - ref: left-matrix_fifth_num
-          shift: [padX, -4u - padY - 3]
+          shift: [padX, padY + 0.325u]
+
+        # ─── Right edge down ───
+        - ref: left-matrix_fifth_bottom
+          shift: [padX, -padY]
+
+        # ─── Bottom-right corner ───
+        - ref: left-command-row_space
+          shift: [padX + 1.125u, -padY]
+
+        # ─── Bottom-left corner ───
         - ref: left-command-row_control
           shift: [-padX, -padY]
-        # Connect to top corner
-        - ref: left-command-row_control
-          shift: [-padX, 3.5u + 2.5]
-        - ref: left-shift-column_first_top
-          shift: [0.75u - padX, pushY]
+          
+    # 2) overlay key centers
+    - what: circle
+      where: /left-.*/
+      radius: 9.5
+      operation: stack
+
+
+
+  board-right:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        # ─── Top edge ───
+        - ref: right-shift-column_first_num
+          shift: [padX , padY + 0.325u]
+
+        - ref: right-matrix_first_num
+          shift: [-padX, padY + 0.325u]
+
+        # ─── Right edge ───
+        - ref: right-matrix_first_num
+          shift: [-padX, -pushY]
+
+        - ref: right-matrix_first_bottom
+          shift: [-padX, pushY]
+
+        # ─── Bottom edge ───
+        - ref: right-command-row_space_first
+          shift: [-padX - 0.75u, -padY]
+        - ref: right-command-row_l-arrow_first
+          shift: [padX, -padY]
+
+        # ─── Inner edge (toward center gap) ───
+        - ref: right-shift-column_first_bottom
+          shift: [padX, -padY]
+
+        - ref: right-shift-column_first_top
+          shift: [padX, pushY]
+
+          # 2) overlay key centers
+    - what: circle
+      where: /right-.*/
+      radius: 9.5
+      operation: stack
+
+  left-board:
+    - what: outline
+      name: board-left  # references your polygon
+  right-board:
+    - what: outline
+      name: board-right
 
             
