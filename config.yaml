@@ -174,12 +174,6 @@ outlines:
         # ─── Bottom-left corner ───
         - ref: left-command-row_control
           shift: [-padX, -padY]
-          
-    # 2) overlay key centers
-    - what: circle
-      where: /left-.*/
-      radius: 9.5
-      operation: stack
 
 
 
@@ -215,11 +209,6 @@ outlines:
         - ref: right-shift-column_first_top
           shift: [padX, pushY]
 
-          # 2) overlay key centers
-    - what: circle
-      where: /right-.*/
-      radius: 9.5
-      operation: stack
 
   left-board:
     - what: outline
@@ -227,5 +216,6 @@ outlines:
   right-board:
     - what: outline
       name: board-right
+
 
             
