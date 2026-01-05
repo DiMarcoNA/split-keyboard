@@ -2,6 +2,8 @@ units:
   px: u + 2
   py: u + 2
 
+  choc_cutout: 14
+
 
   pushX: (u / 2)
   pushY: (u / 2)
@@ -217,5 +219,37 @@ outlines:
     - what: outline
       name: board-right
 
+  plate-left:
+    # Board outline
+    - what: outline
+      name: board-left
+      operation: stack
+    
+    # Choc switch cutouts
+    - what: rectangle
+      where: /left-.*/
+      size: choc_cutout
+      operation: subtract
 
-            
+    - what: circle
+      where: /left-.*/
+      radius: 1
+      operation: stack
+
+
+  plate-right:
+    # Board outline
+    - what: outline
+      name: board-right
+      operation: stack
+
+    # Choc switch cutouts
+    - what: rectangle
+      where: /right-.*/
+      size: choc_cutout
+      operation: subtract
+
+    - what: circle
+      where: /right-.*/
+      radius: 1
+      operation: stack
